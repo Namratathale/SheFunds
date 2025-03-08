@@ -1,0 +1,115 @@
+/* Global Styles */
+body {
+    font-family: 'Arial', sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: #FFFFFF; /* Full white background */
+}
+
+/* Navbar */
+.navbar {
+    background: #F0F0F0; /* Light gray */
+    color: #333;
+    padding: 15px 20px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border-bottom: 2px solid #E0E0E0;
+}
+
+.navbar h1 {
+    margin: 0;
+    font-size: 24px;
+}
+
+.navbar ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    display: flex;
+}
+
+.navbar ul li {
+    margin-left: 20px;
+}
+
+.navbar ul li a {
+    text-decoration: none;
+    color: #333;
+    font-size: 18px;
+}
+
+/* Layout */
+.container {
+    display: flex;
+    width: 100%;
+}
+
+/* Sidebar */
+.sidebar {
+    width: 25%;
+    background: #F9F9F9; /* Soft gray for contrast */
+    color: #333;
+    padding: 20px;
+    height: 100vh;
+    border-right: 2px solid #E0E0E0;
+}
+
+.sidebar h2 {
+    text-align: center;
+}
+
+.sidebar ul {
+    list-style: none;
+    padding: 0;
+}
+
+.course {
+    padding: 12px;
+    margin: 5px 0;
+    cursor: pointer;
+    background: #F0F0F0; /* Light gray */
+    border-radius: 8px;
+    text-align: center;
+    transition: 0.3s;
+    color: #333;
+}
+
+.course:hover {
+    background: #D5D5D5;
+}
+
+.course.completed {
+    background: #f2b6c9; /* Light blue to indicate completion */
+    color: white;
+}
+
+/* Main Content */
+.content {
+    width: 75%;
+    padding: 20px;
+    text-align: center;
+    background: #FFFFFF; /* Full white */
+}
+
+video {
+    width: 80%;
+    max-width: 700px;
+    border-radius: 10px;
+    border: 2px solid #D0D0D0;
+}
+
+button {
+    padding: 12px 20px;
+    background: #ff4f7a; 
+    color: #0c0c0c;
+    border: none;
+    cursor: pointer;
+    margin-top: 10px;
+    border-radius: 8px;
+    transition: 0.3s;
+}
+
+button:hover {
+    background: #ff3575 ;
+}

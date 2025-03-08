@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Financial Literacy Courses</title>
+    <link rel="stylesheet" href="style2.css">
+</head>
+<body>
+
+    <!-- Navigation Bar -->
+    <nav class="navbar">
+        <h1>💰 Financial Literacy Hub</h1>
+        <ul>
+            <li><a href="homepage.html">Home</a></li>
+            <li><a href="#">Courses</a></li>
+            <li><a href="#">Resources</a></li>
+            <li><a href="#">Contact</a></li>
+        </ul>
+    </nav>
+
+    <div class="container">
+        <!-- Sidebar -->
+        <aside class="sidebar">
+            <h2>📚 Courses</h2>
+            <ul id="courseList">
+                <li class="course" data-index="0">1. Introduction to Financial Literacy ✅</li>
+                <li class="course" data-index="1">2. Budgeting & Expense Management</li>
+                <li class="course" data-index="2">3. Saving Strategies</li>
+                <li class="course" data-index="3">4. Investing for Beginners</li>
+                <li class="course" data-index="4">5. Managing Debt & Loans</li>
+                <li class="course" data-index="5">6. Credit Score & Financial Health</li>
+                <li class="course" data-index="6">7. Insurance & Risk Management</li>
+                <li class="course" data-index="7">8. Retirement Planning</li>
+                <li class="course" data-index="8">9. Government Schemes & Financial Aid</li>
+            </ul>
+        </aside>
+
+        <!-- Main Content -->
+        <main class="content">
+            <h2 id="courseTitle">Introduction to Financial Literacy</h2>
+            <video id="courseVideo" controls>
+                <source src="videos/intro.mp4" type="video/mp4">
+                Your browser does not support the video tag.
+            </video>
+            <p id="courseDescription">
+                Financial literacy is the foundation of financial well-being. Learn key concepts like money management, budgeting, investing, and financial planning.
+            </p>
+            <button id="completeBtn">Mark as Complete</button>
+        </main>
+    </div>
+
+    <script src="script2.js"></script>
+</body>
+</html>
