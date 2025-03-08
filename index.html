@@ -17,6 +17,8 @@
 </head>
 <body>
 
+    
+
     <div class="Navbar">
         <a href="index.html"><img class="logo" src="logo.png" alt="logo"></a>
 
@@ -49,7 +51,7 @@
             <p class="header-p">Learn to budget, save, and invest with easy courses, tools, and mentorship. Get started today and unlock endless growth and success!"</p>
            <div style="display: flex;">
             <button class="getstartbtn" onclick="display('#sectionForm')">Get Started</button>
-            <img class="circular-btn"  onclick="location.href='#secFeatures'" src="images/arrow.png" alt="arrow" class="arrow-img"><br>
+            <img class="circular-btn"  onclick="location.href='#secFeatures'" src="arrow.png" alt="arrow" class="arrow-img"><br>
             <p style="margin-left: 3px;">Explore</p>
             </div>
         </div>
@@ -73,7 +75,7 @@
         <div class="container2">
             <div class="row">
                 <div class="fe-cards" >
-                     <img class="coronavirus-financial-recovery_23-2148569807.jpg " src="" alt="featureimg">
+                     <img src="coronavirus-financial-recovery_23-2148569807.jpg" alt="featureimg">
                      <h1>Easy Learning</h1>
                      <p>Our platform is designed to make learning simple, engaging, and accessible for all.</p>
                  </div>
@@ -101,7 +103,7 @@
     <!-- Services -->
         <div class="Service" id="secServices">
             <div class="imgcontent">
-                <img class="serviceimg" src="images/serviceimg.jpg" alt="Serviceimg"/>
+                <img class="serviceimg" src="financial-planning-concept-illustration_114360-16016 (1).jpg" alt="Serviceimg"/>
             </div>
             <div class="content">
                 <h2 class="subtitle">Simple <span class="highlight"> Solutions! </span></h2>
@@ -112,14 +114,14 @@
                         <div class="number">1</div>
                         <div class="text">
                             <h3>Funding</h3>
-                            <p>Reach out via email or phone.</p>
+                            <p>Reach out various Funding schemes.</p>
                         </div>
                     </div>
     
                     <div class="step">
                         <div class="number">2</div>
                         <div class="text">
-                            <h3>Consult</h3>
+                            <h3>Finance</h3>
                             <p>Our expert team answers your questions.</p>
                         </div>
                     </div>
@@ -128,7 +130,7 @@
                         <div class="number">3</div>
                         <div class="text">
                             <h3>Community</h3>
-                            <p>We start working on your learning..</p>
+                            <p>Solve your doubts with chatbot.</p>
                         </div>
                     </div>
     
@@ -136,7 +138,7 @@
                         <div class="number">4</div>
                         <div class="text">
                             <h3>Courses</h3>
-                            <p>Secure your project with a deposit.</p>
+                            <p>Make HER financially stable.</p>
                         </div>
                     </div>
                 </div>
@@ -157,38 +159,38 @@
         <div class="carousel-track">
           <div class="slide">
             <div class="card">
-              <p>"This platform has transformed my work efficiency!"</p>
-              <h3>- Alex Johnson</h3>
+              <p>"This platform has transformed my Financial Knowledge!"</p>
+              <h4>- Alexa Johnson</h4>
             </div>
           </div>
           <div class="slide">
             <div class="card">
-              <p>"The UI is intuitive and easy to navigate. Loved it!"</p>
-              <h3>- Sarah Williams</h3>
+              <p>"Best Platform for handeling Expences. Loved it!"</p>
+              <h4>- Sara Williams</h4>
             </div>
           </div>
           <div class="slide">
             <div class="card">
               <p>"Exceptional support and great experience overall!"</p>
-              <h3>- David Brown</h3>
+              <h4>- Riya Brown</h4>
             </div>
           </div>
           <div class="slide">
             <div class="card">
-              <p>"An essential tool for my daily tasks. Highly recommend!"</p>
-              <h3>- Emily Smith</h3>
+              <p>"An essential tool for my daily expence management. Highly recommend!"</p>
+              <h4>- Emily Smith</h4>
             </div>
           </div>
           <div class="slide">
             <div class="card">
               <p>"A game-changer for workflow optimization!"</p>
-              <h3>- Michael Lee</h3>
+              <h4>- Michael Lee</h4>
             </div>
           </div>
           <div class="slide">
             <div class="card">
               <p>"Great usability, smooth performance, and amazing design!"</p>
-              <h3>- Jessica White</h3>
+              <h4>- Jessica White</h4>
             </div>
           </div>
         </div>
@@ -199,14 +201,14 @@
   </div>
 
   <!-- footer -->
-  <footer class="footer">
+  <footer class="footer"  id="secContact">
     <div class="footer-top">
         Ready to get started? <a href="#">Contact Us</a>
     </div>
     
     <div class="footer-content">
         <div class="footer-section">
-            <h3>BrandBuzz</h3>
+            <h3>Contact Us</h3>
             <div class="social-icons">
                 <a href="#">🔵</a>
                 <a href="#">🟠</a>
@@ -225,9 +227,9 @@
         <div class="footer-section">
             <h3>Design</h3>
             <ul>
-                <li><a href="#">UI/UX Services</a></li>
-                <li><a href="#">Logo & Branding</a></li>
-                <li><a href="#">Product Design</a></li>
+                <li><a href="#">SheFunds</a></li>
+                <li><a href="#">Funding</a></li>
+                <li><a href="#">Explore Courses</a></li>
                 <li><a href="#">Pricing</a></li>
             </ul>
         </div>
@@ -308,9 +310,10 @@ function updateDots() {
 } 
 
 function moveSlide() { 
-    track.style.transform = translateX(-${index * slideWidth}px); 
+    track.style.transform = translateX(-${index*slideWidth}px); 
     updateDots(); 
 } 
+
 
 nextBtn.addEventListener('click', () => { 
     if (index < slides.length - visibleSlides) { 
