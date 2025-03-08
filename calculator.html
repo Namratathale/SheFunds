@@ -1,0 +1,188 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Monthly Financial Tracker</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: Arial, sans-serif;
+        }
+
+        /* Background Color */
+        body {
+            background-color: #FFD2E0;
+            text-align: center;
+            margin: 20px;
+        }
+
+        /* Container Styling */
+        .container {
+            max-width: 500px;
+            margin: auto;
+            padding: 20px;
+            background: white;
+            border-radius: 10px;
+            box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);
+        }
+
+        /* Headings */
+        h2, h3 {
+            color: #ff4f7a;
+        }
+
+        /* Input Fields & Select */
+        input, select, button {
+            margin: 10px 0;
+            padding: 10px;
+            width: 90%;
+            border: 1px solid #ff4f7a;
+            border-radius: 5px;
+            font-size: 16px;
+        }
+
+        /* Remove Background from Input Fields */
+        input, select {
+            background-color: white;
+        }
+
+        /* Button Styling */
+        button {
+            background-color: #ff4f7a;
+            color: white;
+            cursor: pointer;
+            font-weight: bold;
+            border: none;
+            transition: background 0.3s ease-in-out;
+        }
+
+        button:hover {
+            background-color: #d93b62;
+        }
+
+        /* Table Styling */
+        table {
+            width: 100%;
+            margin-top: 20px;
+            border-collapse: collapse;
+            border-radius: 5px;
+            overflow: hidden;
+        }
+
+        th, td {
+            border: 1px solid #ccc;
+            padding: 10px;
+            text-align: center;
+        }
+
+        /* Table Header */
+        th {
+            background-color: #ff4f7a;
+            color: white;
+        }
+
+        /* Warning Message */
+        .warning {
+            color: red;
+            font-weight: bold;
+            margin-top: 10px;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h2>📊 Monthly Financial Tracker</h2>
+        
+        <!-- Budget Input -->
+        <input type="number" id="budget" placeholder="Set Monthly Budget">
+        <button onclick="setBudget()">Set Budget</button>
+        <p><strong>Budget:</strong> <span id="budgetAmount">0</span></p>
+        
+        <!-- Transaction Inputs -->
+        <input type="text" id="desc" placeholder="Transaction Description">
+        <input type="number" id="amount" placeholder="Amount">
+        <select id="type">
+            <option value="income">Income</option>
+            <option value="expense">Expense</option>
+        </select>
+        <button onclick="addTransaction()">Add Transaction</button>
+        
+        <!-- Transactions Table -->
+        <h3>💰 Transactions</h3>
+        <table>
+            <thead>
+                <tr>
+                    <th>Description</th>
+                    <th>Amount</th>
+                    <th>Type</th>
+                </tr>
+            </thead>
+            <tbody id="transactionTable"></tbody>
+        </table>
+        
+        <!-- Financial Summary -->
+        <h3>📈 Summary</h3>
+        <p><strong>Income:</strong> <span id="totalIncome">0</span></p>
+        <p><strong>Expenses:</strong> <span id="totalExpenses">0</span></p>
+        <p><strong>Balance:</strong> <span id="balance">0</span></p>
+        <p id="warningMessage" class="warning"></p>
+    </div>
+
+    <script>
+        let income = 0, expenses = 0, budget = 0;
+
+        function setBudget() {
+            budget = parseFloat(document.getElementById('budget').value);
+            if (isNaN(budget) || budget <= 0) {
+                alert("⚠ Please enter a valid budget.");
+                return;
+            }
+            document.getElementById('budgetAmount').innerText = budget.toFixed(2);
+            document.getElementById('warningMessage').innerText = ""; // Clear warning when budget is set
+        }
+
+        function addTransaction() {
+            const desc = document.getElementById('desc').value;
+            const amount = parseFloat(document.getElementById('amount').value);
+            const type = document.getElementById('type').value;
+            if (!desc || isNaN(amount) || amount <= 0) {
+                alert("⚠ Please enter valid transaction details.");
+                return;
+            }
+
+            const table = document.getElementById('transactionTable');
+            const row = table.insertRow();
+            row.insertCell(0).innerText = desc;
+            row.insertCell(1).innerText = amount.toFixed(2);
+            row.insertCell(2).innerText = type.charAt(0).toUpperCase() + type.slice(1); // Capitalize first letter
+
+            if (type === 'income') {
+                income += amount;
+            } else {
+                expenses += amount;
+            }
+
+            updateSummary();
+            document.getElementById('desc').value = '';
+            document.getElementById('amount').value = '';
+        }
+
+        function updateSummary() {
+            document.getElementById('totalIncome').innerText = income.toFixed(2);
+            document.getElementById('totalExpenses').innerText = expenses.toFixed(2);
+            const balance = income - expenses;
+            document.getElementById('balance').innerText = balance.toFixed(2);
+
+            // Check if expenses exceed the budget
+            if (budget > 0 && expenses > budget) {
+                document.getElementById('warningMessage').innerText = "⚠ Warning: You have exceeded your budget!";
+            } else {
+                document.getElementById('warningMessage').innerText = "";
+            }
+        }
+    </script>
+</body>
+</html>

@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Finance & Budgeting Chatbot</title>
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; font-family: Arial, sans-serif; }
+        body { display: flex; justify-content: center; align-items: center; height: 100vh; background-color: #f8f8f8; }
+        .chat-container { width: 350px; height: 500px; background: white; border-radius: 10px; box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.2); display: flex; flex-direction: column; overflow: hidden; }
+        .chat-header { background: #007bff; color: white; padding: 15px; text-align: center; font-size: 18px; font-weight: bold; }
+        .chat-body { flex: 1; padding: 15px; overflow-y: auto; display: flex; flex-direction: column; }
+        .chat-message { max-width: 80%; padding: 10px; margin: 5px 0; border-radius: 10px; font-size: 14px; }
+        .user-message { background: #d1e7ff; align-self: flex-end; }
+        .bot-message { background: #e0e0e0; align-self: flex-start; }
+        .chat-input { display: flex; padding: 10px; border-top: 1px solid #ddd; background: white; }
+        .chat-input input { flex: 1; padding: 10px; border: 1px solid #ccc; border-radius: 5px; outline: none; }
+        .chat-input button { background: #007bff; color: white; border: none; padding: 10px 15px; margin-left: 5px; cursor: pointer; border-radius: 5px; }
+        .chat-input button:hover { background: #0056b3; }
+    </style>
+</head>
+<body>
+
+<div class="chat-container">
+    <div class="chat-header">💰 Finance & Budgeting Chatbot</div>
+    <div class="chat-body" id="chatBody"></div>
+    <div class="chat-input">
+        <input type="text" id="userInput" placeholder="Ask a question..." onkeypress="handleKeyPress(event)">
+        <button onclick="sendMessage()">Send</button>
+    </div>
+</div>
+
+<script>
+    const chatbotResponses = {
+        "what is a budget?": "A budget is a plan for managing your income and expenses to save money and avoid overspending.",
+        "how can i save money easily?": "Spend less than you earn, avoid unnecessary expenses, and set aside some money every month.",
+        "what is an emergency fund?": "Money saved for unexpected expenses like medical bills or job loss.",
+        "how much should i save for emergencies?": "At least 3-6 months' worth of expenses.",
+        "what are some good budgeting apps?": "Mint, YNAB (You Need A Budget), and PocketGuard.",
+        "what is investing?": "Investing is putting your money into assets like stocks or real estate to grow your wealth.",
+        "what is the best investment for beginners?": "Index funds and fixed deposits are good for beginners.",
+        "what is the difference between saving and investing?": "Saving keeps your money safe, while investing helps it grow over time.",
+        "what is a stock?": "A stock is a small part of a company that you can buy and own.",
+        "is investing risky?": "Yes, but diversifying your investments can reduce risk.",
+        "what is debt?": "Debt is money you borrow and have to pay back with interest.",
+        "what is the best way to pay off debt?": "Pay more than the minimum and focus on high-interest loans first.",
+        "what happens if i don’t pay my loan?": "You may get late fees, a lower credit score, or legal action from the lender.",
+        "what is a credit score?": "A number that shows how good you are at repaying borrowed money.",
+        "how can i improve my credit score?": "Pay your bills on time and keep your credit card balance low.",
+        "what is a grant?": "Free money given to businesses or individuals that you don’t have to repay.",
+        "how can i start a business with no money?": "Start a small online business, offer services, or apply for grants.",
+        "where can i find business grants for women?": "Check government websites, private organizations, and SheFunds' grant list.",
+        "what is the difference between a grant and a loan?": "Grants are free; loans must be paid back with interest.",
+        "how do i apply for a small business loan?": "Have a business plan, good credit score, and proof of income.",
+        "how can i start budgeting if i have never done it before?": "Start by tracking your income and expenses. Categorize your spending and set a monthly budget.",
+        "how much of my income should i save each month?": "The 50/30/20 rule is a good starting point: 50% for needs, 30% for wants, and 20% for savings or debt repayment.",
+        "what are some simple ways to cut down on expenses?": "Reduce unnecessary subscriptions, cook at home, use public transport, and compare prices before purchasing.",
+        "how can i build an emergency fund?": "Start small by setting aside a fixed amount every month. Aim for at least 3-6 months' worth of expenses.",
+        "should i save or invest first?": "Always build an emergency fund first. Once you have at least 3-6 months of expenses saved, start investing.",
+        "what is the best way to start investing with little money?": "Start with mutual funds, index funds, or robo-advisors. Many platforms allow investments with as little as $10 or ₹500.",
+        "what is the safest investment for beginners?": "Fixed deposits, government bonds, and index funds are considered low-risk options for beginners.",
+        "what is compound interest, and why is it important?": "Compound interest means earning interest on both your initial investment and the interest it generates over time.",
+        "how do i choose between mutual funds and stocks?": "Mutual funds are good for beginners as they are diversified and managed by experts. Stocks require more research but offer higher potential returns.",
+        "how can i reduce the risk in my investments?": "Diversify your portfolio by investing in different asset classes, avoid emotional trading, and invest for the long term.",
+        "how can i get out of debt quickly?": "Use the snowball method (pay off smallest debts first) or avalanche method (pay off highest-interest debts first).",
+        "is it better to pay off debt or save money?": "If your debt has high interest (above 7-8%), prioritize paying it off. Otherwise, balance between saving and debt repayment.",
+        "can i negotiate my debt with banks or lenders?": "Yes! Many lenders allow you to renegotiate interest rates or repayment terms.",
+        "default": "I'm not sure about that. Try asking something related to finance, budgeting, or investing!"
+    };
+
+    function sendMessage() {
+        let userText = document.getElementById("userInput").value.toLowerCase();
+        if (userText.trim() === "") return;
+
+        addMessage(userText, "user-message");
+
+        setTimeout(() => {
+            let botResponse = chatbotResponses[userText] || chatbotResponses["default"];
+            addMessage(botResponse, "bot-message");
+        }, 1000);
+
+        document.getElementById("userInput").value = "";
+    }
+
+    function addMessage(text, className) {
+        let chatBody = document.getElementById("chatBody");
+        let messageDiv = document.createElement("div");
+        messageDiv.classList.add("chat-message", className);
+        messageDiv.innerText = text;
+        chatBody.appendChild(messageDiv);
+        chatBody.scrollTop = chatBody.scrollHeight;
+    }
+
+    function handleKeyPress(event) {
+        if (event.key === "Enter") {
+            sendMessage();
+        }
+    }
+</script>
+
+</body>
+</html>
