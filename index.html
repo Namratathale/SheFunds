@@ -8,7 +8,8 @@
     <title>SheFund</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
-   
+    <script src="https://kit.fontawesome.com/3e13e2f9bf.js" crossorigin="anonymous"></script>    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
 
 
     <style>
@@ -17,10 +18,8 @@
 </head>
 <body>
 
-    
-
     <div class="Navbar">
-        <a href="index.html"><img class="logo" src="logo.png" alt="logo"></a>
+        <a href="index.html"><img class="logo" src="images/logo.png" alt="logo"></a>
 
         <div class="nav-links">
             <ul>
@@ -31,39 +30,61 @@
                 <li><a href="#secContact">Contact</a></li>
             </ul>
         </div>
+        <div class="nav-buttons">
+          <div class="hamburger">
+            <div class="line"></div>
+            <div class="line"></div>
+            <div class="line"></div>
+          </div>
 
-        <div class="hamburger">
-            <div class="line"></div>
-            <div class="line"></div>
-            <div class="line"></div>
+        <button class="btn" id="loginBtn">Login</button>
+        <style>
+            .shake {
+            animation: shake 0.5s ease-in-out;
+            scale: 1.05;
+            }
+
+            @keyframes shake {
+            0%, 100% {
+                transform: translateX(0);
+                transform: translateY(0);
+            }
+            25% {
+                transform: translateX(-5px);
+                transform: translateY(-5);
+            }
+            50% {
+                transform: translateX(5px);
+                transform: translateY(5);
+            }
+            75% {
+                transform: translateX(-5px);
+                transform: translateY(-5);
+            }
+            }
+        </style>
+          </div> 
         </div>
-
-        <div class="container1"> 
-            <button class="btn" id="loginBtn" onclick="window.location.href='login.html'">Login</button> 
-    
-        </div> 
     </div>
 
     <!-- Header -->
     <div class="header" id="secHome">
         <div class="top">
-            <h1 class="header-h1"><span>Empowering Women </span>to take Control of Their<br> Finance!</h1>    
-            <p class="header-p">Learn to budget, save, and invest with easy courses, tools, and mentorship. Get started today and unlock endless growth and success!"</p>
+            <h1 class="header-h1"><span class="h-text">Empowering Women </span>to take Control of Their<br> Finance!</h1>    
+            <p class="header-p">Learn to budget, save, and invest with easy courses, tools, and mentorship. Get started today and unlock endless growth and success!"</p>
            <div style="display: flex;">
-            <button class="getstartbtn" onclick="display('#sectionForm')">Get Started</button>
-            <img class="circular-btn"  onclick="location.href='#secFeatures'" src="arrow.png" alt="arrow" class="arrow-img"><br>
-            <p style="margin-left: 3px;">Explore</p>
+            <button class="getstarted-btn" onclick="display('#sectionForm')">Get Started</button>
             </div>
         </div>
         <div class="headerimg">
-            <img class="headerimg1" src="investing-concept-illustration_114360-3555.jpg" alt="header">
+            <img class="headerimg1" src="images/header.jpg" alt="header">
             
             <div class="headerimg2">
-            <img class="smimg1" src="1.png" alt="1">
-            <img class="smimg1" src="2.png" alt="2">
-            <img class="smimg1" src="3.png" alt="3">
-            <img class="smimg1" src="4.png" alt="4">
-            <img class="smimg1" src="5.png" alt="5">
+            <img class="smimg1" src="femenine.png" alt="1">
+            <img class="smimg1" src="femenine.png" alt="2">
+            <img class="smimg1" src="femenine.png" alt="3">
+            <img class="smimg1" src="femenine.png" alt="4">
+            <img class="smimg1" src="femenine.png" alt="5">
             </div>  
         </div>
     </div>
@@ -75,24 +96,24 @@
         <div class="container2">
             <div class="row">
                 <div class="fe-cards" >
-                     <img src="coronavirus-financial-recovery_23-2148569807.jpg" alt="featureimg">
+                     <img class="img1" src="images/feature1.jpg" alt="featureimg">
                      <h1>Easy Learning</h1>
                      <p>Our platform is designed to make learning simple, engaging, and accessible for all.</p>
                  </div>
                  <div class="fe-cards">
-                    <img src="happy-woman-holding-coins-banknotes-hands-cartoon-female-person-pink-background-flat-illustration_74855-18380.jpg" alt="featureimg">
+                    <img src="images/feature2.jpg" alt="featureimg">
                     <h1>Easy Learning</h1>
                   <p>Our platform is designed to make learning simple, engaging, and accessible for all.</p>
                  </div>
         <div class="fe-cards">
             <div>
-            <img src="hand-drawn-bankruptcy-concept_52683-36167.jpg" alt="featureimg">
+            <img src="images/feature3.jpg" alt="featureimg">
             <h1>Easy Learning</h1>
             <p>Our platform is designed to make learning simple, engaging, and accessible for all.</p>
         </div>
     </div>
         <div class="fe-cards">
-            <img src="hand-drawn-youth-day-people-hugging-together_52683-40874.jpg" alt="featureimg">
+            <img src="images/feature4.jpg" alt="featureimg">
             <h1>Easy Learning</h1>
             <p>Our platform is designed to make learning simple, engaging, and accessible for all.</p>
         </div>
@@ -103,25 +124,25 @@
     <!-- Services -->
         <div class="Service" id="secServices">
             <div class="imgcontent">
-                <img class="serviceimg" src="financial-planning-concept-illustration_114360-16016 (1).jpg" alt="Serviceimg"/>
+                <img class="serviceimg" src="images/serviceimg.jpg" alt="Serviceimg"/>
             </div>
             <div class="content">
                 <h2 class="subtitle">Simple <span class="highlight"> Solutions! </span></h2>
                 <p>We understand that no two businesses are alike. That’s why we take the time to understand.</p>
-                
                 <div class="steps">
+                    <!-- <hr class="hr-line"> -->
                     <div class="step">
                         <div class="number">1</div>
                         <div class="text">
                             <h3>Funding</h3>
-                            <p>Reach out various Funding schemes.</p>
+                            <p>Reach out via email or phone.</p>
                         </div>
                     </div>
     
                     <div class="step">
                         <div class="number">2</div>
                         <div class="text">
-                            <h3>Finance</h3>
+                            <h3>Consult</h3>
                             <p>Our expert team answers your questions.</p>
                         </div>
                     </div>
@@ -130,7 +151,7 @@
                         <div class="number">3</div>
                         <div class="text">
                             <h3>Community</h3>
-                            <p>Solve your doubts with chatbot.</p>
+                            <p>We start working on your learning..</p>
                         </div>
                     </div>
     
@@ -138,13 +159,13 @@
                         <div class="number">4</div>
                         <div class="text">
                             <h3>Courses</h3>
-                            <p>Make HER financially stable.</p>
+                            <p>Secure your project with a deposit.</p>
                         </div>
                     </div>
                 </div>
     
                 <div class="buttons">
-                    <button class="btn">Get Started</button>
+                    <button class="getstarted-btn">Get Started</button>
                     <button class="btn outline">Read More</button>
                 </div>
             </div>
@@ -159,38 +180,38 @@
         <div class="carousel-track">
           <div class="slide">
             <div class="card">
-              <p>"This platform has transformed my Financial Knowledge!"</p>
-              <h4>- Alexa Johnson</h4>
+              <p>"This platform has transformed my work efficiency!"</p>
+              <h3>- Alex Johnson</h3>
             </div>
           </div>
           <div class="slide">
             <div class="card">
-              <p>"Best Platform for handeling Expences. Loved it!"</p>
-              <h4>- Sara Williams</h4>
+              <p>"The UI is intuitive and easy to navigate. Loved it!"</p>
+              <h3>- Sarah Williams</h3>
             </div>
           </div>
           <div class="slide">
             <div class="card">
               <p>"Exceptional support and great experience overall!"</p>
-              <h4>- Riya Brown</h4>
+              <h3>- David Brown</h3>
             </div>
           </div>
           <div class="slide">
             <div class="card">
-              <p>"An essential tool for my daily expence management. Highly recommend!"</p>
-              <h4>- Emily Smith</h4>
+              <p>"An essential tool for my daily tasks. Highly recommend!"</p>
+              <h3>- Emily Smith</h3>
             </div>
           </div>
           <div class="slide">
             <div class="card">
               <p>"A game-changer for workflow optimization!"</p>
-              <h4>- Michael Lee</h4>
+              <h3>- Michael Lee</h3>
             </div>
           </div>
           <div class="slide">
             <div class="card">
               <p>"Great usability, smooth performance, and amazing design!"</p>
-              <h4>- Jessica White</h4>
+              <h3>- Jessica White</h3>
             </div>
           </div>
         </div>
@@ -201,19 +222,20 @@
   </div>
 
   <!-- footer -->
-  <footer class="footer"  id="secContact">
+  <footer class="footer">
     <div class="footer-top">
         Ready to get started? <a href="#">Contact Us</a>
     </div>
-    
     <div class="footer-content">
         <div class="footer-section">
-            <h3>Contact Us</h3>
+            <h3>Social Acc</h3>
             <div class="social-icons">
-                <a href="#">🔵</a>
-                <a href="#">🟠</a>
-                <a href="#">🟡</a>
-            </div>
+                <a href="#"> <i class="fa-brands fa-facebook"></i> </a>
+                <a href="#"> <i class="fa-brands fa-twitter"></i> </a>
+                <a href="#"> <i class="fa-brands fa-linkedin"></i> </a>
+                <a href="#"> <i class="fa-brands fa-instagram"></i> </a>
+                
+             </div>
         </div>
         <div class="footer-section">
             <h3>Company</h3>
@@ -227,9 +249,9 @@
         <div class="footer-section">
             <h3>Design</h3>
             <ul>
-                <li><a href="#">SheFunds</a></li>
-                <li><a href="#">Funding</a></li>
-                <li><a href="#">Explore Courses</a></li>
+                <li><a href="#">UI/UX Services</a></li>
+                <li><a href="#">Logo & Branding</a></li>
+                <li><a href="#">Product Design</a></li>
                 <li><a href="#">Pricing</a></li>
             </ul>
         </div>
@@ -242,6 +264,10 @@
                 <li><a href="#">Articles</a></li>
             </ul>
         </div>
+        
+        <div>
+            <img class="circular-btn"  onclick="location.href='#secFeatures'" src="images/arrow.png" alt="arrow" class="arrow-img"><br>
+        </div>
     </div>
 
     <div class="footer-bottom">
@@ -249,8 +275,26 @@
     </div>
 
     <div class="curved-bottom"></div>
+    
 </footer>
   
+<!-- Trigger -->
+ 
+<script>
+    const loginBtn = document.getElementById('loginBtn');
+
+    // Function to add and remove the shake effect
+    function triggerShake() {
+    loginBtn.classList.add('shake');
+    setTimeout(() => {
+        loginBtn.classList.remove('shake');
+    }, 500); // Duration of the shake effect
+    }
+
+    // Trigger the shake effect every 4 seconds
+    setInterval(triggerShake, 4000);
+</script>
+
     <script>
         const hamburger = document.querySelector('.hamburger');
         const navLinks = document.querySelector('.nav-links');
@@ -259,27 +303,6 @@
             navLinks.classList.toggle('open');
         });
     </script>
-<!-- trigger button  -->
-<script> 
-
-    function addShakeEffect(button) { 
-
-        button.classList.add("shake"); 
-
-        setTimeout(() => button.classList.remove("shake"), 400); 
-    } 
-    function shakeButtons() { 
-        const loginBtn = document.getElementById("loginBtn"); 
-
-        const registerBtn = document.getElementById("registerBtn"); 
-        setTimeout(() => addShakeEffect(loginBtn), 100); 
-
-        setTimeout(() => addShakeEffect(registerBtn), 500); 
-
-    } 
-    setInterval(shakeButtons, 5000); 
-
-</script> 
 
 <!-- feedbacks -->
 <script>
@@ -310,10 +333,9 @@ function updateDots() {
 } 
 
 function moveSlide() { 
-    track.style.transform = translateX(-${index*slideWidth}px); 
+    track.style.transform = `translateX(-${index * slideWidth}px)`; 
     updateDots(); 
 } 
-
 
 nextBtn.addEventListener('click', () => { 
     if (index < slides.length - visibleSlides) { 
