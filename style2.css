@@ -3,18 +3,20 @@ body {
     font-family: 'Arial', sans-serif;
     margin: 0;
     padding: 0;
-    background-color: #FFFFFF; /* Full white background */
+    background-color: #f7f7f7; /* Light gray background for better contrast */
 }
 
 /* Navbar */
 .navbar {
-    background: #F0F0F0; /* Light gray */
-    color: #333;
-    padding: 15px 20px;
+    height: 60px;
+    background: linear-gradient(90deg, #f46b8d, #ff3575,#ff93ae); /* Gradient background */
+    color: #fff;
+    padding: 5px 20px;
     display: flex;
     justify-content: space-between;
     align-items: center;
-    border-bottom: 2px solid #E0E0E0;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); /* Subtle shadow */
+    border-bottom: none;
 }
 
 .navbar h1 {
@@ -35,8 +37,17 @@ body {
 
 .navbar ul li a {
     text-decoration: none;
-    color: #333;
+    color: #fff;
     font-size: 18px;
+    transition: color 0.3s;
+}
+
+.navbar ul li a:hover {
+    color: #ffd1dc; /* Light pink on hover */
+}
+
+.navbar img{
+    border-radius: 50%;
 }
 
 /* Layout */
@@ -48,17 +59,22 @@ body {
 /* Sidebar */
 .sidebar {
     width: 25%;
-    background: #F9F9F9; /* Soft gray for contrast */
+    background: #ffffff; /* White background */
     color: #333;
     padding: 20px;
     height: 100vh;
-    border-right: 2px solid #E0E0E0;
+    box-shadow: 2px 0 5px rgba(0, 0, 0, 0.1); /* Subtle shadow */
+    border-right: none;
 }
 
 .sidebar h2 {
     text-align: center;
+    color: #000000; /* Matching color */
 }
-
+.sidebar img{
+    position: relative;
+    top: 10px;
+}
 .sidebar ul {
     list-style: none;
     padding: 0;
@@ -68,19 +84,20 @@ body {
     padding: 12px;
     margin: 5px 0;
     cursor: pointer;
-    background: #F0F0F0; /* Light gray */
+    background: #f0f0f0; /* Light gray */
     border-radius: 8px;
     text-align: center;
-    transition: 0.3s;
+    transition: background 0.3s, transform 0.3s;
     color: #333;
 }
 
 .course:hover {
-    background: #D5D5D5;
+    background: #d5d5d5;
+    transform: scale(1.05); /* Slightly enlarge on hover */
 }
 
 .course.completed {
-    background: #f2b6c9; /* Light blue to indicate completion */
+    background: #457bd3;
     color: white;
 }
 
@@ -89,27 +106,30 @@ body {
     width: 75%;
     padding: 20px;
     text-align: center;
-    background: #FFFFFF; /* Full white */
+    background: #ffffff; /* White */
+    box-shadow: -2px 0 5px rgba(0, 0, 0, 0.1); /* Subtle shadow */
 }
 
 video {
     width: 80%;
     max-width: 700px;
     border-radius: 10px;
-    border: 2px solid #D0D0D0;
+    border: 2px solid #d0d0d0;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Subtle shadow */
 }
 
 button {
     padding: 12px 20px;
     background: #ff4f7a; 
-    color: #0c0c0c;
+    color: #fff;
     border: none;
     cursor: pointer;
     margin-top: 10px;
     border-radius: 8px;
-    transition: 0.3s;
+    transition: background 0.3s, transform 0.3s;
 }
 
 button:hover {
-    background: #ff3575 ;
+    background: #ff3575;
+    transform: scale(1.05); /* Slightly enlarge on hover */
 }
