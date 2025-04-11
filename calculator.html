@@ -1,188 +1,280 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Monthly Financial Tracker</title>
-    <style>
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-            font-family: Arial, sans-serif;
-        }
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Monthly Financial Tracker</title>
+  <style>
+    * {
+      margin: 0; padding: 0; box-sizing: border-box;
+      font-family: 'Segoe UI', sans-serif;
+    }
+    body {
+      background-color: #FFD2E0;
+      text-align: center;
+    }
+    
 
-        /* Background Color */
-        body {
-            background-color: #FFD2E0;
-            text-align: center;
-            margin: 20px;
-        }
+/* Navbar */
+.navbar {
+    background: linear-gradient(90deg, #f46b8d, #ff3575,#ff93ae); /* Gradient background */
+    color: #fff;
+    padding: 5px 20px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); /* Subtle shadow */
+    border-bottom: none;
+    margin-bottom: 15px;
+}
 
-        /* Container Styling */
-        .container {
-            max-width: 500px;
-            margin: auto;
-            padding: 20px;
-            background: white;
-            border-radius: 10px;
-            box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);
-        }
+.navbar h1 {
+    margin: 0;
+    font-size: 24px;
+}
 
-        /* Headings */
-        h2, h3 {
-            color: #ff4f7a;
-        }
+.navbar ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    display: flex;
+}
 
-        /* Input Fields & Select */
-        input, select, button {
-            margin: 10px 0;
-            padding: 10px;
-            width: 90%;
-            border: 1px solid #ff4f7a;
-            border-radius: 5px;
-            font-size: 16px;
-        }
+.navbar ul li {
+    margin-left: 20px;
+}
 
-        /* Remove Background from Input Fields */
-        input, select {
-            background-color: white;
-        }
+.navbar ul li a {
+    text-decoration: none;
+    color: #fff;
+    font-size: 18px;
+    transition: color 0.3s;
+}
 
-        /* Button Styling */
-        button {
-            background-color: #ff4f7a;
-            color: white;
-            cursor: pointer;
-            font-weight: bold;
-            border: none;
-            transition: background 0.3s ease-in-out;
-        }
+.navbar ul li a:hover {
+    color: #ffd1dc; /* Light pink on hover */
+}
 
-        button:hover {
-            background-color: #d93b62;
-        }
+.navbar img{
+    border-radius: 50%;
+}
 
-        /* Table Styling */
-        table {
-            width: 100%;
-            margin-top: 20px;
-            border-collapse: collapse;
-            border-radius: 5px;
-            overflow: hidden;
-        }
-
-        th, td {
-            border: 1px solid #ccc;
-            padding: 10px;
-            text-align: center;
-        }
-
-        /* Table Header */
-        th {
-            background-color: #ff4f7a;
-            color: white;
-        }
-
-        /* Warning Message */
-        .warning {
-            color: red;
-            font-weight: bold;
-            margin-top: 10px;
-        }
-    </style>
+    .container {
+      background: white;
+      padding: 25px;
+      max-width: 600px;
+      margin-top: 15px;
+      margin: auto;
+      border-radius: 15px;
+      box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+      transition: transform 0.3s ease;
+    }
+    h2, h3 {
+      color: #ff4f7a;
+      margin-bottom: 10px;
+    }
+    input, select, button {
+      width: 90%;
+      padding: 10px;
+      margin: 8px;
+      border-radius: 8px;
+      border: 1px solid #ff4f7a;
+      font-size: 16px;
+    }
+    button {
+      background-color: #ff4f7a;
+      color: white;
+      font-weight: bold;
+      border: none;
+      cursor: pointer;
+      transition: background 0.3s;
+    }
+    button:hover {
+      background-color: #d93b62;
+    }
+    .warning {
+      color: red;
+      font-weight: bold;
+      margin-top: 10px;
+    }
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      margin-top: 15px;
+    }
+    th, td {
+      padding: 10px;
+      border: 1px solid #ccc;
+      text-align: center;
+    }
+    th {
+      background-color: #ff4f7a;
+      color: white;
+    }
+    .progress-bar {
+      background: #f2f2f2;
+      border-radius: 10px;
+      overflow: hidden;
+      margin-top: 20px;
+      height: 25px;
+    }
+    .progress {
+      height: 100%;
+      width: 0;
+      background: linear-gradient(90deg, #ff4f7a, #ffa8c4);
+      transition: width 0.4s ease-in-out;
+    }
+  </style>
 </head>
 <body>
-    <div class="container">
-        <h2>📊 Monthly Financial Tracker</h2>
-        
-        <!-- Budget Input -->
-        <input type="number" id="budget" placeholder="Set Monthly Budget">
-        <button onclick="setBudget()">Set Budget</button>
-        <p><strong>Budget:</strong> <span id="budgetAmount">0</span></p>
-        
-        <!-- Transaction Inputs -->
-        <input type="text" id="desc" placeholder="Transaction Description">
-        <input type="number" id="amount" placeholder="Amount">
-        <select id="type">
-            <option value="income">Income</option>
-            <option value="expense">Expense</option>
-        </select>
-        <button onclick="addTransaction()">Add Transaction</button>
-        
-        <!-- Transactions Table -->
-        <h3>💰 Transactions</h3>
-        <table>
-            <thead>
-                <tr>
-                    <th>Description</th>
-                    <th>Amount</th>
-                    <th>Type</th>
-                </tr>
-            </thead>
-            <tbody id="transactionTable"></tbody>
-        </table>
-        
-        <!-- Financial Summary -->
-        <h3>📈 Summary</h3>
-        <p><strong>Income:</strong> <span id="totalIncome">0</span></p>
-        <p><strong>Expenses:</strong> <span id="totalExpenses">0</span></p>
-        <p><strong>Balance:</strong> <span id="balance">0</span></p>
-        <p id="warningMessage" class="warning"></p>
-    </div>
+    <!-- // Navigation Bar -->
+    <nav class="navbar">
+        <img src="logo.png" height="60px" alt="Logo" class="logo">
+        <h1>💰 Monthly Expence Tracker</h1>
+        <ul>
+            <li><a href="homepage.html">Home</a></li>
+            <li><a href="#">Courses</a></li>
+            <li><a href="#">Resources</a></li>
+            <li><a href="#">Contact</a></li>
+        </ul>
+    </nav>
+  <div class="container">
+    <h2>📊 Monthly Financial Tracker</h2>
 
-    <script>
-        let income = 0, expenses = 0, budget = 0;
+    <input type="number" id="budget" placeholder="Set Monthly Budget" />
+    <button onclick="setBudget()">Set Budget</button>
+    <p><strong>Budget:</strong> ₹<span id="budgetAmount">0</span></p>
 
-        function setBudget() {
-            budget = parseFloat(document.getElementById('budget').value);
-            if (isNaN(budget) || budget <= 0) {
-                alert("⚠ Please enter a valid budget.");
-                return;
-            }
-            document.getElementById('budgetAmount').innerText = budget.toFixed(2);
-            document.getElementById('warningMessage').innerText = ""; // Clear warning when budget is set
-        }
+    <input type="text" id="desc" placeholder="Transaction Description" />
+    <input type="number" id="amount" placeholder="Amount" />
+    <select id="type">
+      <option value="income">Income</option>
+      <option value="expense">Expense</option>
+    </select>
+    <button onclick="addTransaction()">Add Transaction</button>
 
-        function addTransaction() {
-            const desc = document.getElementById('desc').value;
-            const amount = parseFloat(document.getElementById('amount').value);
-            const type = document.getElementById('type').value;
-            if (!desc || isNaN(amount) || amount <= 0) {
-                alert("⚠ Please enter valid transaction details.");
-                return;
-            }
+    <h3>💰 Transactions</h3>
+    <table>
+      <thead>
+        <tr><th>Description</th><th>Amount</th><th>Type</th></tr>
+      </thead>
+      <tbody id="transactionTable"></tbody>
+    </table>
 
-            const table = document.getElementById('transactionTable');
-            const row = table.insertRow();
-            row.insertCell(0).innerText = desc;
-            row.insertCell(1).innerText = amount.toFixed(2);
-            row.insertCell(2).innerText = type.charAt(0).toUpperCase() + type.slice(1); // Capitalize first letter
+    <h3>📈 Summary</h3>
+    <p><strong>Income:</strong> ₹<span id="totalIncome">0</span></p>
+    <p><strong>Expenses:</strong> ₹<span id="totalExpenses">0</span></p>
+    <p><strong>Balance:</strong> ₹<span id="balance">0</span></p>
+    <div class="progress-bar"><div class="progress" id="progressBar"></div></div>
+    <p id="warningMessage" class="warning"></p>
 
-            if (type === 'income') {
-                income += amount;
-            } else {
-                expenses += amount;
-            }
+    <button onclick="exportToCSV()">📁 Export to CSV</button>
+    <button onclick="resetAll()">🔁 Reset All</button>
+  </div>
 
-            updateSummary();
-            document.getElementById('desc').value = '';
-            document.getElementById('amount').value = '';
-        }
+  <script>
+    let income = 0, expenses = 0, budget = 0;
+    let negativeAlertShown = false;
 
-        function updateSummary() {
-            document.getElementById('totalIncome').innerText = income.toFixed(2);
-            document.getElementById('totalExpenses').innerText = expenses.toFixed(2);
-            const balance = income - expenses;
-            document.getElementById('balance').innerText = balance.toFixed(2);
+    function setBudget() {
+      const input = parseFloat(document.getElementById('budget').value);
+      if (isNaN(input) || input <= 0) {
+        alert("⚠ Please enter a valid monthly budget.");
+        return;
+      }
+      budget = input;
+      document.getElementById('budgetAmount').innerText = budget.toFixed(2);
+      updateProgressBar();
+      document.getElementById('warningMessage').innerText = "";
+    }
 
-            // Check if expenses exceed the budget
-            if (budget > 0 && expenses > budget) {
-                document.getElementById('warningMessage').innerText = "⚠ Warning: You have exceeded your budget!";
-            } else {
-                document.getElementById('warningMessage').innerText = "";
-            }
-        }
-    </script>
+    function addTransaction() {
+      const desc = document.getElementById('desc').value.trim();
+      const amount = parseFloat(document.getElementById('amount').value);
+      const type = document.getElementById('type').value;
+
+      if (!desc || isNaN(amount) || amount <= 0) {
+        alert("⚠ Please enter valid transaction details.");
+        return;
+      }
+
+      const table = document.getElementById('transactionTable');
+      const row = table.insertRow();
+      row.insertCell(0).innerText = desc;
+      row.insertCell(1).innerText = amount.toFixed(2);
+      row.insertCell(2).innerText = type.charAt(0).toUpperCase() + type.slice(1);
+
+      if (type === 'income') income += amount;
+      else expenses += amount;
+
+      updateSummary();
+      document.getElementById('desc').value = '';
+      document.getElementById('amount').value = '';
+    }
+
+    function updateSummary() {
+      const balance = income - expenses;
+      document.getElementById('totalIncome').innerText = income.toFixed(2);
+      document.getElementById('totalExpenses').innerText = expenses.toFixed(2);
+      document.getElementById('balance').innerText = balance.toFixed(2);
+      updateProgressBar();
+
+      if (budget > 0 && expenses > budget) {
+        document.getElementById('warningMessage').innerText = "⚠ You have exceeded your monthly budget!";
+      } else {
+        document.getElementById('warningMessage').innerText = "";
+      }
+
+      if (balance < 0 && !negativeAlertShown) {
+        alert("🚨 Alert: Your balance is not sufficient! You're overspending.");
+        negativeAlertShown = true;
+      }
+
+      if (balance >= 0) negativeAlertShown = false;
+    }
+
+    function updateProgressBar() {
+      if (budget > 0) {
+        let percent = Math.min((expenses / budget) * 100, 100);
+        document.getElementById('progressBar').style.width = percent + '%';
+      }
+    }
+
+    function resetAll() {
+      income = 0; expenses = 0; budget = 0;
+      negativeAlertShown = false;
+      document.getElementById('budget').value = '';
+      document.getElementById('desc').value = '';
+      document.getElementById('amount').value = '';
+      document.getElementById('budgetAmount').innerText = '0';
+      document.getElementById('totalIncome').innerText = '0';
+      document.getElementById('totalExpenses').innerText = '0';
+      document.getElementById('balance').innerText = '0';
+      document.getElementById('transactionTable').innerHTML = '';
+      document.getElementById('progressBar').style.width = '0%';
+      document.getElementById('warningMessage').innerText = '';
+    }
+
+    function exportToCSV() {
+      let rows = [["Description", "Amount", "Type"]];
+      const table = document.getElementById("transactionTable").rows;
+
+      for (let i = 0; i < table.length; i++) {
+        const row = table[i];
+        const desc = row.cells[0].innerText;
+        const amt = row.cells[1].innerText;
+        const type = row.cells[2].innerText;
+        rows.push([desc, amt, type]);
+      }
+
+      let csvContent = "data:text/csv;charset=utf-8," + rows.map(e => e.join(",")).join("\n");
+      const link = document.createElement("a");
+      link.setAttribute("href", encodeURI(csvContent));
+      link.setAttribute("download", "financial_tracker.csv");
+      document.body.appendChild(link);
+      link.click();
+      document.body.removeChild(link);
+    }
+  </script>
 </body>
 </html>
