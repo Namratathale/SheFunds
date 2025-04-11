@@ -1,96 +1,263 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Finance & Budgeting Chatbot</title>
-    <style>
-        * { margin: 0; padding: 0; box-sizing: border-box; font-family: Arial, sans-serif; }
-        body { display: flex; justify-content: center; align-items: center; height: 100vh; background-color: #FFD2E0; }
-        .chat-container { width: 350px; height: 500px; background: white; border-radius: 10px; box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.2); display: flex; flex-direction: column; overflow: hidden; }
-        .chat-header { background: #ff4f7a; color: white; padding: 15px; text-align: center; font-size: 18px; font-weight: bold; }
-        .chat-body { flex: 1; padding: 15px; overflow-y: auto; display: flex; flex-direction: column; }
-        .chat-message { max-width: 80%; padding: 10px; margin: 5px 0; border-radius: 10px; font-size: 14px; }
-        .user-message { background: #ffb3c6; align-self: flex-end; }
-        .bot-message { background: #f0f0f0; align-self: flex-start; }
-        .chat-input { display: flex; padding: 10px; border-top: 1px solid #ddd; background: white; }
-        .chat-input input { flex: 1; padding: 10px; border: 1px solid #ff4f7a; border-radius: 5px; outline: none; background: white; }
-        .chat-input button { background: #ff4f7a; color: white; border: none; padding: 10px 15px; margin-left: 5px; cursor: pointer; border-radius: 5px; transition: background 0.3s ease-in-out; }
-        .chat-input button:hover { background: #d93b62; }
-    </style>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Finance & Budgeting Chatbot</title>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      font-family: "Segoe UI", sans-serif;
+    }
+/* Navbar */
+.navbar {
+    height: 60px;
+    background: linear-gradient(90deg, #f46b8d, #ff3575,#ff93ae); /* Gradient background */
+    color: #fff;
+    padding: 10px 20px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); /* Subtle shadow */
+    border-bottom: none;
+}
+
+.navbar h1 {
+    margin: 0;
+    font-size: 24px;
+}
+
+.navbar ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    display: flex;
+}
+
+.navbar ul li {
+    margin-left: 20px;
+}
+
+.navbar ul li a {
+    text-decoration: none;
+    color: #fff;
+    font-size: 18px;
+    transition: color 0.3s;
+}
+
+.navbar ul li a:hover {
+    color: #ffd1dc; /* Light pink on hover */
+}
+
+.navbar img{
+    border-radius: 50%;
+    height: 50px;
+}
+    .main {
+        display: flex;
+      justify-content: center;
+      height: 110vh;
+      background: linear-gradient(135deg, #ffe5ec, #ffd6e8);
+    }
+
+    .chat-container {
+      width: 380px;
+      height: 500px;
+      margin-top: 30px;
+      background: #ffffff;
+      border-radius: 16px;
+      box-shadow: 0 8px 20px rgba(0, 0, 0, 0.1);
+      display: flex;
+      flex-direction: column;
+      overflow: hidden;
+      animation: slideIn 0.6s ease;
+    }
+
+    @keyframes slideIn {
+      from {
+        transform: translateY(20px);
+        opacity: 0;
+      }
+      to {
+        transform: translateY(0);
+        opacity: 1;
+      }
+    }
+
+    .chat-header {
+      background: linear-gradient(135deg, #ff4f7a, #ff7096);
+      color: white;
+      padding: 20px;
+      text-align: center;
+      font-size: 20px;
+      font-weight: bold;
+      border-bottom: 1px solid #f9d9e0;
+    }
+
+    .chat-body {
+      flex: 1;
+      padding: 15px;
+      overflow-y: auto;
+      display: flex;
+      flex-direction: column;
+      scroll-behavior: smooth;
+    }
+
+    .chat-message {
+      max-width: 80%;
+      padding: 12px 15px;
+      margin: 6px 0;
+      border-radius: 15px;
+      font-size: 14px;
+      line-height: 1.5;
+      animation: fadeIn 0.3s ease-in-out;
+    }
+
+    .user-message {
+      background: #ffe2eb;
+      align-self: flex-end;
+      border-bottom-right-radius: 2px;
+    }
+
+    .bot-message {
+      background: #f5f5f5;
+      align-self: flex-start;
+      border-bottom-left-radius: 2px;
+    }
+
+    @keyframes fadeIn {
+      from {
+        transform: translateY(8px);
+        opacity: 0;
+      }
+      to {
+        transform: translateY(0);
+        opacity: 1;
+      }
+    }
+
+    .chat-input {
+      display: flex;
+      padding: 10px 15px;
+      border-top: 1px solid #eee;
+      background: #fff;
+    }
+
+    .chat-input input {
+      flex: 1;
+      padding: 10px 15px;
+      border: 1px solid #ffb4c2;
+      border-radius: 20px;
+      outline: none;
+      transition: border 0.3s;
+    }
+
+    .chat-input input:focus {
+      border-color: #ff4f7a;
+    }
+
+    .chat-input button {
+      background: #ff4f7a;
+      color: white;
+      border: none;
+      padding: 10px 16px;
+      margin-left: 10px;
+      border-radius: 20px;
+      cursor: pointer;
+      transition: background 0.3s;
+    }
+
+    .chat-input button:hover {
+      background: #e93d65;
+    }
+  </style>
 </head>
 <body>
-
-<div class="chat-container">
+    
+    <nav class="navbar">
+        <img src="logo.png" height="60px" alt="Logo" class="logo">
+        <h3>Meet 'Financy' an AI BOT 🤖
+        </h3>
+        <ul>
+            <li><a href="homepage.html">Home</a></li>
+            <li><a href="#">Courses</a></li>
+            <li><a href="#">Resources</a></li>
+            <li><a href="#">Contact</a></li>
+        </ul>
+    </nav>
+    <div class="main">
+  <div class="chat-container">
     <div class="chat-header">💰 Finance & Budgeting Chatbot</div>
     <div class="chat-body" id="chatBody"></div>
     <div class="chat-input">
-        <input type="text" id="userInput" placeholder="Ask a question..." onkeypress="handleKeyPress(event)">
-        <button onclick="sendMessage()">Send</button>
+      <input type="text" id="userInput" placeholder="Ask about savings, loans, investment..." onkeypress="handleKeyPress(event)">
+      <button onclick="sendMessage()">Send</button>
     </div>
+  </div>
+
 </div>
 
-<script>
+  <script>
     const chatbotResponses = {
-        "what is a budget?": "A budget is a plan for managing your income and expenses to save money and avoid overspending.",
-        "how can i save money easily?": "Spend less than you earn, avoid unnecessary expenses, and set aside some money every month.",
-        "what is an emergency fund?": "Money saved for unexpected expenses like medical bills or job loss.",
-        "how much should i save for emergencies?": "At least 3-6 months' worth of expenses.",
-        "what are some good budgeting apps?": "Mint, YNAB (You Need A Budget), and PocketGuard.",
-        "what is investing?": "Investing is putting your money into assets like stocks or real estate to grow your wealth.",
-        "what is the best investment for beginners?": "Index funds and fixed deposits are good for beginners.",
-        "what is the difference between saving and investing?": "Saving keeps your money safe, while investing helps it grow over time.",
-        "what is a stock?": "A stock is a small part of a company that you can buy and own.",
-        "is investing risky?": "Yes, but diversifying your investments can reduce risk.",
-        "what is debt?": "Debt is money you borrow and have to pay back with interest.",
-        "what is the best way to pay off debt?": "Pay more than the minimum and focus on high-interest loans first.",
-        "what happens if i don’t pay my loan?": "You may get late fees, a lower credit score, or legal action from the lender.",
-        "what is a credit score?": "A number that shows how good you are at repaying borrowed money.",
-        "how can i improve my credit score?": "Pay your bills on time and keep your credit card balance low.",
-        "what is a grant?": "Free money given to businesses or individuals that you don’t have to repay.",
-        "how can i start a business with no money?": "Start a small online business, offer services, or apply for grants.",
-        "where can i find business grants for women?": "Check government websites, private organizations, and SheFunds' grant list.",
-        "what is the difference between a grant and a loan?": "Grants are free; loans must be paid back with interest.",
-        "how do i apply for a small business loan?": "Have a business plan, good credit score, and proof of income.",
-        "how can i start budgeting if i have never done it before?": "Start by tracking your income and expenses. Categorize your spending and set a monthly budget.",
-        "how much of my income should i save each month?": "The 50/30/20 rule is a good starting point: 50% for needs, 30% for wants, and 20% for savings or debt repayment.",
-        "what are some simple ways to cut down on expenses?": "Reduce unnecessary subscriptions, cook at home, use public transport, and compare prices before purchasing.",
-        "how can i build an emergency fund?": "Start small by setting aside a fixed amount every month. Aim for at least 3-6 months' worth of expenses.",
-        "should i save or invest first?": "Always build an emergency fund first. Once you have at least 3-6 months of expenses saved, start investing.",
-        "what is the best way to start investing with little money?": "Start with mutual funds, index funds, or robo-advisors. Many platforms allow investments with as little as $10 or ₹500.",
-        "what is the safest investment for beginners?": "Fixed deposits, government bonds, and index funds are considered low-risk options for beginners.",
-        "default": "I'm not sure about that. Try asking something related to finance, budgeting, or investing!"
+      "what is a budget?": "A budget is a plan for managing your income and expenses to save money and avoid overspending.",
+      "how can i save money easily?": "Spend less than you earn, avoid unnecessary expenses, and set aside some money every month.",
+      "what is an emergency fund?": "Money saved for unexpected expenses like medical bills or job loss.",
+      "how much should i save for emergencies?": "At least 3-6 months' worth of expenses.",
+      "what are some good budgeting apps?": "Mint, YNAB (You Need A Budget), and PocketGuard.",
+      "what is investing?": "Investing is putting your money into assets like stocks or real estate to grow your wealth.",
+      "what is the best investment for beginners?": "Index funds and fixed deposits are good for beginners.",
+      "what is the difference between saving and investing?": "Saving keeps your money safe, while investing helps it grow over time.",
+      "what is a stock?": "A stock is a small part of a company that you can buy and own.",
+      "is investing risky?": "Yes, but diversifying your investments can reduce risk.",
+      "what is debt?": "Debt is money you borrow and have to pay back with interest.",
+      "what is the best way to pay off debt?": "Pay more than the minimum and focus on high-interest loans first.",
+      "what happens if i don’t pay my loan?": "You may get late fees, a lower credit score, or legal action from the lender.",
+      "what is a credit score?": "A number that shows how good you are at repaying borrowed money.",
+      "how can i improve my credit score?": "Pay your bills on time and keep your credit card balance low.",
+      "what is a grant?": "Free money given to businesses or individuals that you don’t have to repay.",
+      "how can i start a business with no money?": "Start a small online business, offer services, or apply for grants.",
+      "where can i find business grants for women?": "Check government websites, private organizations, and SheFunds' grant list.",
+      "what is the difference between a grant and a loan?": "Grants are free; loans must be paid back with interest.",
+      "how do i apply for a small business loan?": "Have a business plan, good credit score, and proof of income.",
+      "how can i start budgeting if i have never done it before?": "Start by tracking your income and expenses. Categorize your spending and set a monthly budget.",
+      "how much of my income should i save each month?": "The 50/30/20 rule is a good starting point: 50% for needs, 30% for wants, and 20% for savings or debt repayment.",
+      "what are some simple ways to cut down on expenses?": "Reduce unnecessary subscriptions, cook at home, use public transport, and compare prices before purchasing.",
+      "how can i build an emergency fund?": "Start small by setting aside a fixed amount every month. Aim for at least 3-6 months' worth of expenses.",
+      "should i save or invest first?": "Always build an emergency fund first. Once you have at least 3-6 months of expenses saved, start investing.",
+      "what is the best way to start investing with little money?": "Start with mutual funds, index funds, or robo-advisors. Many platforms allow investments with as little as $10 or ₹500.",
+      "what is the safest investment for beginners?": "Fixed deposits, government bonds, and index funds are considered low-risk options for beginners.",
+      "default": "I'm not sure about that. Try asking something related to finance, budgeting, or investing!"
     };
 
     function sendMessage() {
-        let userText = document.getElementById("userInput").value.toLowerCase();
-        if (userText.trim() === "") return;
+      const userInput = document.getElementById("userInput");
+      const userText = userInput.value.toLowerCase().trim();
+      if (!userText) return;
 
-        addMessage(userText, "user-message");
+      addMessage(userText, "user-message");
 
-        setTimeout(() => {
-            let botResponse = chatbotResponses[userText] || chatbotResponses["default"];
-            addMessage(botResponse, "bot-message");
-        }, 1000);
+      setTimeout(() => {
+        const botReply = chatbotResponses[userText] || chatbotResponses["default"];
+        addMessage(botReply, "bot-message");
+      }, 600);
 
-        document.getElementById("userInput").value = "";
+      userInput.value = "";
     }
 
     function addMessage(text, className) {
-        let chatBody = document.getElementById("chatBody");
-        let messageDiv = document.createElement("div");
-        messageDiv.classList.add("chat-message", className);
-        messageDiv.innerText = text;
-        chatBody.appendChild(messageDiv);
-        chatBody.scrollTop = chatBody.scrollHeight;
+      const chatBody = document.getElementById("chatBody");
+      const messageDiv = document.createElement("div");
+      messageDiv.className = `chat-message ${className}`;
+      messageDiv.textContent = text;
+      chatBody.appendChild(messageDiv);
+      chatBody.scrollTop = chatBody.scrollHeight;
     }
 
     function handleKeyPress(event) {
-        if (event.key === "Enter") {
-            sendMessage();
-        }
+      if (event.key === "Enter") sendMessage();
     }
-</script>
-
+  </script>
 </body>
 </html>
