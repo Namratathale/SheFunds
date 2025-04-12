@@ -68,6 +68,137 @@ body{
   cursor: pointer;
   background: var(--secondary-color);
 }
+.gifts{
+  cursor: pointer;
+}
+/* gift */
+
+.present {
+  width: 410px;
+  max-width: 90vw;
+  margin: 30px auto;
+  margin-bottom: 0px;
+  cursor: pointer;
+  position: relative;
+  scale: 0.5;
+}
+
+.box {
+  width: 400px;
+  max-width: 90vw;
+  height: 250px;
+  background: radial-gradient(white 15%, transparent 15.1%), 
+              radial-gradient(white 15%, transparent 15.1%), rgb(248, 58, 58);
+  background-position: 0 0, 25px 25px;
+  background-size: 50px 50px;
+  position: relative;
+  margin: 0 auto;
+}
+
+.box span, .lid span {
+  position: absolute;
+  display: block;
+  background: rgba(235, 199, 0, 0.8);
+  box-shadow: 1px 2px 3px rgba(0, 0, 0, 0.1);
+}
+
+.box span:first-child {
+  height: 60px;
+  top: 80px;
+}
+
+.box span:last-child, .lid span {
+  width: 60px;
+  height: 100%;
+  left: 170px;
+}
+
+.lid {
+  width: 400px;
+  max-width: 90vw;
+  height: 70px;
+  background-color: rgb(216, 52, 52);
+  box-shadow: 1px 2px 3px rgba(0, 0, 0, 0.2);
+  position: relative;
+  border-radius: 15px 15px 0 0;
+
+  top: 5px;
+  left: 5px;
+  z-index: 1;
+  padding: 2px;
+  transition: top 0.5s ease-out, left 0.55s ease-out, transform 0.5s ease-out;
+}
+.promo {
+  font-size: 40px;
+  color: #d81b60;
+  text-align: center;
+  position: relative;
+  top: 10px;
+  height: 0;
+  transition: all ease-out 0.7s;
+}
+
+.promo p {
+  font-size: 30px;
+  margin: 0;
+}
+.promo span {
+  font-size: 48px;
+  color: #e91e63;
+  text-align: center;
+  line-height: 60px;
+  font-weight: bold;
+}
+.promo h2,h3 {
+  font-size: 40px;
+  margin: 0;
+}
+
+.open .lid {
+  border-radius: 15px 15px 0 0;
+  top: -5px;
+    width: 340px;
+  height: 35px;
+  background-color: rgb(216, 52, 52);
+  box-shadow: 1px 2px 3px rgba(0, 0, 0, 0.2);
+  top: -50px;
+  transform: rotateZ(130deg);
+  left: 350px;
+}
+
+.open .promo {
+  top: -190px;
+}
+
+.open .box {
+  animation: bounce 0.6s;
+}
+
+@keyframes bounce {
+  0% { transform: scale(1); }
+  50% { transform: scale(1.05); }
+  100% { transform: scale(1); }
+}
+
+.open-btn {
+  display: block;
+  margin: 0 auto;
+  margin-top: 20px;
+  padding: 12px 24px;
+  font-size: 18px;
+  background: gold;
+  border: none;
+  border-radius: 10px;
+  cursor: pointer;
+  font-family: "Itim", cursive;
+  transition: 0.3s ease;
+}
+
+.open-btn:hover {
+  background: orange;
+  transform: scale(1.05);
+}
+
 /* cover section */
 .cover{
   padding-top: 0;
